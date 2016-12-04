@@ -1,17 +1,45 @@
+<!--
+  Generated template for the Home page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
+
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Gonner G-Link</ion-title>
   </ion-navbar>
+
 </ion-header>
 
+
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <div  class="intro-text">
+    <img alt="Gonner" src="./../../assets/logo_m_blue.png" />
+    <p>Bienvenido a <b>G-Link</b> para las Alarmas Gonner</p>
+    <p>El asistente virtual para el manejo comodo y sencillo de sus alarmas</p>
+    <p>Para comenzar coloque un nombre del perfil y el numero de celular</p>
+  </div>
+  <form (ngSubmit)="setConfig()">
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>Nombre Perfil</ion-label>
+        <ion-input [(ngModel)]="profile.name" name="profileName" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Nro de celular</ion-label>
+        <ion-input [(ngModel)]="profile.number" name="cellphoneNumber" type="number"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>PIN</ion-label>
+        <ion-input [(ngModel)]="profile.pin" name="pin" type="password"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <div padding>
+      <button ion-button type="submit" block>Ingresar</button>
+    </div>
+  </form>
 </ion-content>

@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+import { ConfigurationPage } from '../pages/configuration/configuration';
+import { ProfilePage } from '../pages/profile/profile';
+import { ControlPage } from '../pages/control/control';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+
+
+declare var window: any;
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    ConfigurationPage,
+    ProfilePage,
+    ControlPage,
     HomePage,
     TabsPage
   ],
@@ -20,8 +25,9 @@ import { TabsPage } from '../pages/tabs/tabs';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    ConfigurationPage,
+    ProfilePage,
+    ControlPage,
     HomePage,
     TabsPage
   ],
