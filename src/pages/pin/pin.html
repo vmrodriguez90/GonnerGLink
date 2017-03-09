@@ -1,0 +1,33 @@
+<!--
+  Generated template for the Pin page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Gonner G-Link</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <h3>PIN</h3>
+  <p>Si desea modificar el <b>PIN</b></p>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>PIN Viejo</ion-label>
+      <ion-input type="password" [(ngModel)]="oldPin" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>PIN Nuevo</ion-label>
+      <ion-input type="password" [(ngModel)]="newPin"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button (click)="setPin()">Guardar PIN</button>
+</ion-content>

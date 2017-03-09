@@ -4,15 +4,37 @@
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+
+
 <ion-header>
-
   <ion-navbar>
-    <ion-title>Control</ion-title>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>
+      G-Link
+    </ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
+  <h3>Control</h3>
+  <p>Active o Desactive las <b>Salidas</b></p>
+    <ion-list>
+      <ion-item-sliding  *ngFor="let output of outputs">
+        <ion-item>
+          <h2>{{item.name}}</h2>
+          <p>Deslice para ver opciones</p>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="primary" (click)="activate(item.value)">
+            Activar
+          </button>
+          <button ion-button color="danger" (click)="deactivate(item.value)">
+            Desactivar
+          </button>
+        </ion-item-options>
 
+      </ion-item-sliding>
+
+  </ion-list>
 </ion-content>

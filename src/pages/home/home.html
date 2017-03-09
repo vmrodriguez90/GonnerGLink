@@ -14,32 +14,102 @@
 
 
 <ion-content padding>
-  <div  class="intro-text">
-    <img alt="Gonner" src="./../../assets/logo_m_blue.png" />
-    <p>Bienvenido a <b>G-Link</b> para las Alarmas Gonner</p>
-    <p>El asistente virtual para el manejo comodo y sencillo de sus alarmas</p>
-    <p>Para comenzar coloque un nombre del perfil y el numero de celular</p>
-  </div>
-  <form (ngSubmit)="setConfig()">
-    <ion-list>
-      <ion-item>
-        <ion-label fixed>Nombre Perfil</ion-label>
-        <ion-input [(ngModel)]="profile.name" name="profileName" type="text"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label fixed>Nro de celular</ion-label>
-        <ion-input [(ngModel)]="profile.number" name="cellphoneNumber" type="number"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label fixed>PIN</ion-label>
-        <ion-input [(ngModel)]="profile.pin" name="pin" type="password"></ion-input>
-      </ion-item>
-    </ion-list>
-
-    <div padding>
-      <button ion-button type="submit" block>Ingresar</button>
+  <div class="wizard">
+    <div class="step" *ngIf="step === 1 && !showLoading">
+      <img src="./../../assets/logo_hd.png"/>
+      <h3>Bienvenido a Gonner GLink</h3>
+      <p>La app que le permite controlar sus distintos accesorios por medio de el modulo <b>GLink</b></p>
+      <br/>
+      <p>Para continuar con su configuracion inicial, <b> presione la flecha de la derecha </b></p>
     </div>
-  </form>
+    <div class="step" *ngIf="step === 2 && !showLoading">
+      <p>A continuacion le pediremos que <b>ingrese los datos del modulo G-Link.</b></p>
+      <ion-list>
+
+        <ion-item>
+          <ion-label floating>Nombre Perfil</ion-label>
+          <ion-input type="text" [(ngModel)]="profile.name" ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>PIN</ion-label>
+          <ion-input type="password" [(ngModel)]="profile.pin"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Numero Modulo</ion-label>
+          <ion-input type="tel" [(ngModel)]="profile.number"></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <p>El <b>modulo se reiniciara de fabrica</b> para poder configurar todo nuevamente, este proceso <b>puede llevar varios minutos</b></p>
+      <p>Para continuar <b>presione la flecha de la derecha</b> </p>
+    </div>
+    <div class="step" *ngIf="showLoading">
+      <img src="./../../assets/loading.gif" />
+      <p>Esperando la respuesta del modulo, por favor espere, este proceso puede llevar un minuto.</p>
+    </div>
+    <div class="step" *ngIf="step === 3 && !showLoading">
+      <h3>El proceso de configuracion a finalizado.</h3>
+      <p>Si desea continuar modificando todos los parametros clickee en la flecha de la derecha.</p>
+      <p>En caso de no querer continuar en este momento, puede saltear la configuracion. Podra modificarlo en todo momento desde la seccion de Configuracion</p>
+      <button ion-button (click)="skipConfig()">Saltear configuracion</button>
+    </div>
+    <div class="step" *ngIf="step === 4 && !showLoading">
+      <h3>PIN</h3>
+      <p>Si desea modificar el <b>PIN</b></p>
+      <p>En caso de no querer continuar en este momento, puede pasar la configuracion.</p>
+      <ion-list>
+
+        <ion-item>
+          <ion-label floating>PIN Viejo</ion-label>
+          <ion-input type="password" [(ngModel)]="oldPin" ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>PIN Nuevo</ion-label>
+          <ion-input type="password" [(ngModel)]="newPin"></ion-input>
+        </ion-item>
+      </ion-list>
+      <button ion-button (click)="setPin()">Guardar PIN</button>
+    </div>
+    <div class="step" *ngIf="step === 5 && !showLoading">
+      <h3>Telefonos</h3>
+      <p>Si desea modificar los <b>Telefonos</b></p>
+      <p>En caso de no querer continuar en este momento, puede pasar la configuracion.</p>
+      <ion-list>
+
+        <ion-item>
+          <ion-label floating>Telefono 1</ion-label>
+          <ion-input type="tel" [(ngModel)]="profile.tel1" ></ion-input>
+          <button ion-button clear item-right (click)="saveTel(1)">Guardar</button>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Telefono 2</ion-label>
+          <ion-input type="tel" [(ngModel)]="profile.tel2" ></ion-input>
+          <button ion-button clear item-right (click)="saveTel(2)">Guardar</button>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Telefono 3</ion-label>
+          <ion-input type="tel" [(ngModel)]="profile.tel3" ></ion-input>
+          <button ion-button clear item-right (click)="saveTel(3)">Guardar</button>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Telefono 4</ion-label>
+          <ion-input type="tel" [(ngModel)]="profile.tel4" ></ion-input>
+          <button ion-button clear item-right (click)="saveTel(4)">Guardar</button>
+        </ion-item>
+      </ion-list>
+
+    </div>
+    <div class="arrows" *ngIf="!showLoading">
+      <button *ngIf="step === 1">
+        &nbsp;
+      </button>
+      <button (click)="prevStep()" *ngIf="step !==1"><ion-icon name="arrow-dropleft-circle"></ion-icon>
+      </button>
+      <button (click)="nextStep()" *ngIf="step !== maxSteps"><ion-icon name="arrow-dropright-circle"></ion-icon>
+      </button>
+    </div>
+  </div>
+
 </ion-content>

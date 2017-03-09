@@ -1,11 +1,23 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { ConfigurationPage } from '../pages/configuration/configuration';
-import { ProfilePage } from '../pages/profile/profile';
-import { ControlPage } from '../pages/control/control';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
+import { SmsService } from './../providers/sms-service';
+import { User } from './../providers/user';
+import {ControlPage} from './../pages/control/control';
+import {LinkPage} from './../pages/link/link';
+import {PinPage} from './../pages/pin/pin';
+import {ReportInputPage} from './../pages/report-input/report-input';
+import {TimeInputPage} from './../pages/time-input/time-input';
+import {TelephonePage} from './../pages/telephone/telephone';
+import {ProfilePage } from './../pages/profile/profile';
+import {TimeOutputPage} from './../pages/time-output/time-output';
+import {ReportOutputPage} from './../pages/report-output/report-output';
+import {StatusPage} from './../pages/status/status';
+import {InnamePage} from './../pages/inname/inname';
+import {OutnamePage} from './../pages/outname/outname';
+
+import { HomePage } from './../pages/home/home';
+import { Storage } from '@ionic/storage';
 
 
 declare var window: any;
@@ -13,11 +25,20 @@ declare var window: any;
 @NgModule({
   declarations: [
     MyApp,
-    ConfigurationPage,
-    ProfilePage,
     ControlPage,
     HomePage,
-    TabsPage
+    LinkPage,
+    PinPage,
+    ReportInputPage,
+    ReportOutputPage,
+    TimeInputPage,
+    TimeOutputPage,
+    TelephonePage,
+    StatusPage,
+    ProfilePage,
+    OutnamePage,
+    InnamePage
+
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -25,12 +46,24 @@ declare var window: any;
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ConfigurationPage,
-    ProfilePage,
-    ControlPage,
     HomePage,
-    TabsPage
+    ControlPage,
+    LinkPage,
+    PinPage,
+    ReportInputPage,
+    ReportOutputPage,
+    TimeInputPage,
+    TimeOutputPage,
+    TelephonePage,
+    StatusPage,
+    ProfilePage,
+    OutnamePage,
+    InnamePage
   ],
-  providers: []
+  providers: [
+    SmsService,
+    User,
+    Storage
+  ]
 })
 export class AppModule {}

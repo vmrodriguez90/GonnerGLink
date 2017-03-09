@@ -1,5 +1,6 @@
 // http://ionicframework.com/docs/v2/theming/
-
+@import "./../../node_modules/sass-flex-mixin/_flex";
+@import "./../../node_modules/include-media/dist/include-media";
 
 // App Global Sass
 // --------------------------------------------------
@@ -27,7 +28,7 @@ $toolbar-md-background:                   color($colors, primary);
 $tabbar-md-background:                    #f8f8f8;
 
 // Change the color of the tabs text
-$tab-button-md-active-color:              color($colors, primary);
+$tab-button-md-active-color:              #fff;
 $tab-button-md-inactive-color:            #8c8c8c;
 
 // Change the color of the segment button text
