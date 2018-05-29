@@ -1,5 +1,7 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/v2/theming/
+$font-path: "../assets/fonts";
+
 @import "ionic.globals";
 
 
@@ -10,8 +12,6 @@
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
-$text-color:        #000;
-$background-color:  #fff;
 
 
 
@@ -24,24 +24,12 @@ $background-color:  #fff;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #2176AE,
-  secondary:  #57B8FF,
-  danger:     #FE6847,
-  light:      #FBB13C,
-  dark:       #B66D0D
+  primary:    #387ef5,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222
 );
-
-// Gonner Theme
-// --------------------------------------------------
-// Gonner theme for apply to the app
-
-// Use the primary color as the background for the toolbar-md-background
-$toolbar-background:                   color($colors, primary);
-
-// Change the color of the segment button text
-$toolbar-active-color:                 #fff;
-$toolbar-inactive-color:               #f0f0f0;
-$segment-button-text-color-activated:  #fff;
 
 
 // App iOS Variables
@@ -80,5 +68,11 @@ $segment-button-text-color-activated:  #fff;
 // The premium icon font for Ionic. For more info, please see:
 // http://ionicframework.com/docs/v2/ionicons/
 
-$ionicons-font-path: "../assets/fonts";
-@import "ionicons";
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";

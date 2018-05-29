@@ -11,16 +11,8 @@
   }
   .arrows {
     @include flexbox();
-    @include flex-flow(row nowrap);
+    @include flex-flow(row-reverse nowrap);
     @include justify-content(space-between);
     width: 100%;
-    button {
-      background: transparent;
-      ion-icon{
-        font-size:70px;
-        color: color($colors, primary);
-      }
-
-    }
   }
 }

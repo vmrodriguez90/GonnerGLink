@@ -24,22 +24,25 @@
     </div>
     <div class="step" *ngIf="step === 2 && !showLoading">
       <p>A continuacion le pediremos que <b>ingrese los datos del modulo G-Link.</b></p>
-      <ion-list>
+      <md-list>
+        <md-list-item>
+          <md-input-container>
+            <input mdInput placeholder="Nombre Perfil"  [(ngModel)]="profile.name" />
+          </md-input-container>
 
-        <ion-item>
-          <ion-label floating>Nombre Perfil</ion-label>
-          <ion-input type="text" [(ngModel)]="profile.name" ></ion-input>
-        </ion-item>
+        </md-list-item>
+        <md-list-item>
+          <md-input-container>
+            <input mdInput placeholder="PIN"  type="password" [(ngModel)]="profile.pin" />
+          </md-input-container>
+        </md-list-item>
+        <md-list-item>
+          <md-input-container>
+            <input mdInput placeholder="Numero Modulo"  type="tel" [(ngModel)]="profile.number" />
+          </md-input-container>
+        </md-list-item>
+      </md-list>
 
-        <ion-item>
-          <ion-label floating>PIN</ion-label>
-          <ion-input type="password" [(ngModel)]="profile.pin"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label floating>Numero Modulo</ion-label>
-          <ion-input type="tel" [(ngModel)]="profile.number"></ion-input>
-        </ion-item>
-      </ion-list>
 
       <p>El <b>modulo se reiniciara de fabrica</b> para poder configurar todo nuevamente, este proceso <b>puede llevar varios minutos</b></p>
       <p>Para continuar <b>presione la flecha de la derecha</b> </p>
@@ -58,57 +61,55 @@
       <h3>PIN</h3>
       <p>Si desea modificar el <b>PIN</b></p>
       <p>En caso de no querer continuar en este momento, puede pasar la configuracion.</p>
-      <ion-list>
-
-        <ion-item>
-          <ion-label floating>PIN Viejo</ion-label>
-          <ion-input type="password" [(ngModel)]="oldPin" ></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label floating>PIN Nuevo</ion-label>
-          <ion-input type="password" [(ngModel)]="newPin"></ion-input>
-        </ion-item>
-      </ion-list>
-      <button ion-button (click)="setPin()">Guardar PIN</button>
+      <md-list>
+        <md-list-item>
+          <md-input-container>
+            <input mdInput placeholder="PIN Viejo"  type="password" [(ngModel)]="oldPin" />
+          </md-input-container>
+        </md-list-item>
+        <md-list-item>
+          <md-input-container>
+            <input mdInput placeholder="PIN Nuevo"  type="password" [(ngModel)]="newPin" />
+          </md-input-container>
+        </md-list-item>
+      </md-list>
+      <button md-button (click)="setPin()">Guardar PIN</button>
     </div>
     <div class="step" *ngIf="step === 5 && !showLoading">
       <h3>Telefonos</h3>
       <p>Si desea modificar los <b>Telefonos</b></p>
       <p>En caso de no querer continuar en este momento, puede pasar la configuracion.</p>
-      <ion-list>
 
-        <ion-item>
-          <ion-label floating>Telefono 1</ion-label>
-          <ion-input type="tel" [(ngModel)]="profile.tel1" ></ion-input>
-          <button ion-button clear item-right (click)="saveTel(1)">Guardar</button>
-        </ion-item>
-        <ion-item>
-          <ion-label floating>Telefono 2</ion-label>
-          <ion-input type="tel" [(ngModel)]="profile.tel2" ></ion-input>
-          <button ion-button clear item-right (click)="saveTel(2)">Guardar</button>
-        </ion-item>
-        <ion-item>
-          <ion-label floating>Telefono 3</ion-label>
-          <ion-input type="tel" [(ngModel)]="profile.tel3" ></ion-input>
-          <button ion-button clear item-right (click)="saveTel(3)">Guardar</button>
-        </ion-item>
-        <ion-item>
-          <ion-label floating>Telefono 4</ion-label>
-          <ion-input type="tel" [(ngModel)]="profile.tel4" ></ion-input>
-          <button ion-button clear item-right (click)="saveTel(4)">Guardar</button>
-        </ion-item>
-      </ion-list>
-
+      <md-list>
+        <md-list-item>
+          <md-input-container>
+            <input mdInput placeholder="Telefono 1"  type="tel" [(ngModel)]="profile.tel1" />
+          </md-input-container>
+          <button md-button (click)="saveTel(1)">Guardar</button>
+        </md-list-item>
+        <md-list-item>
+          <md-input-container>
+            <input mdInput placeholder="Telefono 2"  type="tel" [(ngModel)]="profile.tel2" />
+          </md-input-container>
+          <button md-button (click)="saveTel(2)">Guardar</button>
+        </md-list-item>
+        <md-list-item>
+          <md-input-container>
+            <input mdInput placeholder="Telefono 3"  type="tel" [(ngModel)]="profile.tel3" />
+          </md-input-container>
+          <button md-button (click)="saveTel(3)">Guardar</button>
+        </md-list-item>
+        <md-list-item>
+          <md-input-container>
+            <input mdInput placeholder="Telefono 4"  type="tel" [(ngModel)]="profile.tel4" />
+          </md-input-container>
+          <button md-button (click)="saveTel(4)">Guardar</button>
+        </md-list-item>
+      </md-list>
     </div>
-    <div class="arrows" *ngIf="!showLoading">
-      <button *ngIf="step === 1">
-        &nbsp;
-      </button>
-      <button (click)="prevStep()" *ngIf="step !==1"><ion-icon name="arrow-dropleft-circle"></ion-icon>
-      </button>
-      <button (click)="nextStep()" *ngIf="step !== maxSteps"><ion-icon name="arrow-dropright-circle"></ion-icon>
-      </button>
+    <div class="arrows"  *ngIf="!showLoading">
+      <button (click)="prevStep()" *ngIf="step !==1" md-button>Anterior</button>
+      <button (click)="nextStep()" *ngIf="step !== maxSteps" md-button>Siguiente</button>
     </div>
   </div>
 
